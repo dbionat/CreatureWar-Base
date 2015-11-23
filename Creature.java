@@ -1,22 +1,44 @@
-
+import java.util.Random;
 /**
  * Write a description of class Creature here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Daniel Bionat
+ * @version 3.122A
  */
 public class Creature
 {
    private int hp;
    private int strength;
+   private Random roll;
    
-   public Creature(){
-       
+   public Creature()        //inital stats
+   {
+       roll = new Random();
+       hp = roll.nextInt(10);
+       while (hp < 5)
+       {
+           hp = roll.nextInt(20);
+       }
+       strength = roll.nextInt(10);
+        while (strength < 5)
+       {
+           strength = roll.nextInt(20);
+       }
+   }
+   
+    /**
+    * Creature creation
+    * 
+    */
+   public Creature(int hp, int strength)
+   {
+       this.hp = hp;
+       this.strength = strength;
    }
     
    public int damage(){
-       //TODO: change this
-       return 0;
+       int dmg = roll.nextInt(strength);
+       return dmg;
     }
     
 }
